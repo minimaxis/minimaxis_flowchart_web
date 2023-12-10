@@ -35,7 +35,7 @@ const App = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/miniscript_to_sympy", {
+      const response = await fetch("https://flowchart-api.onrender.com/miniscript_to_sympy", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
