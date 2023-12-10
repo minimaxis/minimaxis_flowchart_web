@@ -27,7 +27,8 @@ const App = () => {
   };
 
   const handleMiniscriptChange = (event) => {
-    setMiniscriptValue(event.target.value);
+    const lowercaseValue = event.target.value.toLowerCase();
+    setMiniscriptValue(lowercaseValue);
   };
 
   const handleFetchData = async () => {
@@ -55,7 +56,7 @@ const App = () => {
       } else {
         const errorMessage = await response.text(); 
         console.error("Error fetching data:", errorMessage);
-        setError("Error fetching data");
+        setError("An error has occurred, please consult the Developer");
       }
     } catch (error) {
       setError("Error fetching data");
@@ -77,7 +78,7 @@ const App = () => {
           className="input"
         />
         <button onClick={handleFetchData} className="button">Generate Miniscript</button>
-        {loading && <p>Loading...</p>}
+        {loading && <p className="loading">Loading... Minimaxis is working to generate </p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className="margin"></div>
         <Mermaid chart={mermaidChart} key={mermaidKey} />

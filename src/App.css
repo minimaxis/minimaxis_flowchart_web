@@ -43,3 +43,10 @@ body {
 .margin{
   margin-top: 10px;
 }
+
+.loading{
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+
+}
