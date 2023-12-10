@@ -22,6 +22,10 @@ const App = () => {
   const [error, setError] = useState(null);
   const [mermaidKey, setMermaidKey] = useState(0);
 
+  const handleReturn = () => {
+    window.location.href = 'https://app.minimaxis.com/#/chat';
+  };
+
   const handleMiniscriptChange = (event) => {
     setMiniscriptValue(event.target.value);
   };
@@ -49,7 +53,7 @@ const App = () => {
 
         setMermaidKey((prevKey) => prevKey + 1);
       } else {
-        const errorMessage = await response.text(); // Read the response body
+        const errorMessage = await response.text(); 
         console.error("Error fetching data:", errorMessage);
         setError("Error fetching data");
       }
@@ -63,16 +67,21 @@ const App = () => {
 
   return (
     <div className="App">
-      <input
-        type="text"
-        placeholder="Enter miniscript"
-        value={miniscriptValue}
-        onChange={handleMiniscriptChange}
-      />
-      <button onClick={handleFetchData}>Generate Miniscrip</button>
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <Mermaid chart={mermaidChart} key={mermaidKey} />
+      <div className="containerapp">
+        <button className="button" onClick={handleReturn}>Back to chat</button>
+        <input
+          type="text"
+          placeholder="Enter miniscript"
+          value={miniscriptValue}
+          onChange={handleMiniscriptChange}
+          className="input"
+        />
+        <button onClick={handleFetchData} className="button">Generate Miniscript</button>
+        {loading && <p>Loading...</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <div className="margin"></div>
+        <Mermaid chart={mermaidChart} key={mermaidKey} />
+      </div>
     </div>
   );
 };
